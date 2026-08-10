@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/824
 
 ![img-2215-중간](/resource/68/E008BB-B29A-52B1-9D0B-638EDC150001/01-img-2215-중간.jpg)
 
-* [잘나가는 서비스 기획자 도그냥은 왜 PM/PO가 되었을까? | 이미준(도그냥) - 교보문고](https://product.kyobobook.co.kr/detail/S000213017619) - product.kyobobook.co.kr
+* [잘나가는 서비스 기획자 도그냥은 왜 PM/PO가 되었을까? \| 이미준(도그냥) - 교보문고](https://product.kyobobook.co.kr/detail/S000213017619) - product.kyobobook.co.kr
 
 PO로서 새로운 도전이 주제이지만 한편으로는 직장인 성장에 관한 이야기이기도 하다.
 

@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/846
 
 ![81ia1y5pjll](/resource/0D/BCC71C-6074-514F-AC53-2C8586ACFBFC/01-81ia1y5pjll.jpg)
 
-* [Beautiful Evidence | Tufte, Edward R. - 교보문고](https://product.kyobobook.co.kr/detail/S000003061973) - product.kyobobook.co.kr
+* [Beautiful Evidence \| Tufte, Edward R. - 교보문고](https://product.kyobobook.co.kr/detail/S000003061973) - product.kyobobook.co.kr
 
 Edward Tufte의 "Beautiful Evidence"는 정보 시각화의 원칙과 효과적인 데이터 표현 방법을 탐구하는 책이다.
 

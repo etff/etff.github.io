@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/865
 
 ![img-3640-중간](/resource/E8/FEEF05-7552-5D24-A5D6-DF25C5E17D9E/01-img-3640-중간.jpg)
 
-* [테디노트의 랭체인을 활용한 RAG 비법노트(기본편) | 이경록 - 교보문고](https://product.kyobobook.co.kr/detail/S000216574552) - product.kyobobook.co.kr
+* [테디노트의 랭체인을 활용한 RAG 비법노트(기본편) \| 이경록 - 교보문고](https://product.kyobobook.co.kr/detail/S000216574552) - product.kyobobook.co.kr
 
 기본적인 설명 뿐만아니라 책의 예제를 상세하게 제공해서
 

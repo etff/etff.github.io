@@ -17,9 +17,9 @@ origin  : https://itcoin.tistory.com/734
 
 ![img-1381](/resource/76/56ADA4-9CC3-5362-B0BA-3453A880CF2A/01-img-1381.jpg)
 
-* [Docs for Developers 기술 문서 작성 완벽 가이드 | 자레드 바티 - 교보문고](https://product.kyobobook.co.kr/detail/S000201419245) - product.kyobobook.co.kr
+* [Docs for Developers 기술 문서 작성 완벽 가이드 \| 자레드 바티 - 교보문고](https://product.kyobobook.co.kr/detail/S000201419245) - product.kyobobook.co.kr
 
-* [개발자, 한 달에 책 한 권 읽기 2023년 5월 모임 | Festa!](https://festa.io/events/3457) - festa.io
+* [개발자, 한 달에 책 한 권 읽기 2023년 5월 모임 \| Festa!](https://festa.io/events/3457) - festa.io
 
 2023년 05월 25일 책 모임 - Docs for Developers
 

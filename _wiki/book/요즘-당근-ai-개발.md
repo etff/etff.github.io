@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/884
 
 ![aa](/resource/1B/7BF01A-1672-5346-8734-EFA4F0BACED3/01-aa.jpg)
 
-* [요즘 당근 AI 개발 | 당근 팀 - 교보문고](https://product.kyobobook.co.kr/detail/S000217613503) - product.kyobobook.co.kr
+* [요즘 당근 AI 개발 \| 당근 팀 - 교보문고](https://product.kyobobook.co.kr/detail/S000217613503) - product.kyobobook.co.kr
 
 실무에 AI 어떻게 활용하는데라는 고민이 있을 때 읽어볼 수 있을 것 같다.
 

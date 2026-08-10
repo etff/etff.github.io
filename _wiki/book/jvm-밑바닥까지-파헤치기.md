@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/828
 
 ![img-2277-중간](/resource/34/61786C-7832-5168-8DF9-FEC097D5DC79/01-img-2277-중간.jpg)
 
-* [JVM 밑바닥까지 파헤치기 | 저우즈밍 - 교보문고](https://product.kyobobook.co.kr/detail/S000213057051) - product.kyobobook.co.kr
+* [JVM 밑바닥까지 파헤치기 \| 저우즈밍 - 교보문고](https://product.kyobobook.co.kr/detail/S000213057051) - product.kyobobook.co.kr
 
 JVM 기반 개발을 하고 있다면 정말 추천하고 싶다. 시중에 이만한 책이 있나 싶다.
 

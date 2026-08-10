@@ -51,7 +51,7 @@ appVersion: "1.0.0" # 애플리케이션 버전
 
 {% raw %}* {{ .Chart.Name}}: Chart.yaml의 name 값을 가져옵니다.{% endraw %}
 {% raw %}* {{ .Values.replicaCount}}: values.yaml에 정의된 복제본 수를 가져옵니다.{% endraw %}
-{% raw %}* {{- toYaml .Values.securityContext | nindent 14 }}: securityContext의 값을 YAML 객체로 주입하며, nindent 14 함수를 사용하여 14칸 들여쓰기를 자동으로 처리{% endraw %}
+{% raw %}* {{- toYaml .Values.securityContext \| nindent 14 }}: securityContext의 값을 YAML 객체로 주입하며, nindent 14 함수를 사용하여 14칸 들여쓰기를 자동으로 처리{% endraw %}
 * template/deployment
 
 {% raw %}
@@ -86,7 +86,7 @@ EOF
 
 values.yaml 작성 (기본값 정의)
 
-{% raw %}values.yaml은 차트의 기본 구성 값을 정의하며, 템플릿 파일에서 {{ .Values.<key> }} 형태로 참조됩니다.{% endraw %}
+{% raw %}values.yaml은 차트의 기본 구성 값을 정의하며, 템플릿 파일에서 {{ .Values.&lt;key&gt; }} 형태로 참조됩니다.{% endraw %}
 
 * securityContext: {}로 빈 객체를 설정하는 이유는 Deployment 템플릿에서 toYaml 함수를 사용했기 때문입니다. 빈 객체라도 YAML 객체 형태여야 합니다
 
@@ -229,7 +229,7 @@ EOF
 기존 deployment.yaml과 service.yaml에서 중복되던 레이블 정의를 include 함수를 통해 _helpers.tpl에 정의된 블록을 호출하도록 수정합니다. 이때 들여쓰기(Whitespace)가 깨지지 않도록 nindent 함수를 반드시 사용해야 합니다.
 
 * include "pacman.selectorLabels" **.**: _helpers.tpl에 정의된 pacman.selectorLabels 템플릿을 호출합니다. 이때 . (점)은 현재 컨텍스트(차트 정보, 값 등)를 템플릿 블록으로 전달하는 역할을 합니다.
-* | nindent X: 호출 결과를 파이프(|)로 받아서 X칸 만큼 들여쓰기를 적용합니다. YAML 구조가 깨지지 않게 하는 핵심 기능입니다
+* \| nindent X: 호출 결과를 파이프(\|)로 받아서 X칸 만큼 들여쓰기를 적용합니다. YAML 구조가 깨지지 않게 하는 핵심 기능입니다
 
 deployment.yaml 내부에서 matchLabels는 6칸 들여쓰기가 필요하고, template.metadata.labels는 8칸 들여쓰기가 필요합니다
 
@@ -407,7 +407,7 @@ templates/deployment.yaml 파일의 Pod 템플릿 메타데이터(metadata.annot
 {% endraw %}
 
 * include (print $.Template.BasePath "/configmap.yaml") .: ConfigMap 템플릿 파일이 최종적으로 렌더링될 내용을 읽어옵니다.
-* | sha256sum: 읽어온 내용 전체의 SHA-256 해시를 계산합니다.
+* \| sha256sum: 읽어온 내용 전체의 SHA-256 해시를 계산합니다.
 * ConfigMap의 내용(values에서 주입된 값)이 변경되면 해시 값이 달라지고, 이는 Deployment의 Pod 정의를 변경하는 것으로 간주되어 자동으로 롤링 업데이트가 트리거됩니다.
 
 ### ConfigMap 파일 준비
@@ -438,7 +438,7 @@ NAME: greetings
 
 1. Helm은 수정된 values.yaml을 로드하고 모든 템플릿을 다시 렌더링합니다.
 2. configmap.yaml이 렌더링될 때, 변경된 값(예: "Alohas again")이 포함되어 ConfigMap의 내용 자체가 변경됩니다.
-{% raw %}3. deployment.yaml이 렌더링될 때, checksum/config 어노테이션 로직({{ include ... | sha256sum }})이 변경된 ConfigMap의 내용을 기반으로 새로운 SHA-256 해시 값을 계산합니다.{% endraw %}
+{% raw %}3. deployment.yaml이 렌더링될 때, checksum/config 어노테이션 로직({{ include ... \| sha256sum }})이 변경된 ConfigMap의 내용을 기반으로 새로운 SHA-256 해시 값을 계산합니다.{% endraw %}
 4. Helm은 이 새로운 해시 값을 가진 Deployment Manifest를 쿠버네티스 API 서버에 전송합니다.
 
 ### 롤링 업데이트 확인
@@ -483,11 +483,11 @@ Tekton의 핵심 구성 요소인 Pipelines, Triggers, Dashboard를 설치하고
 
 |  |  |  |
 | --- | --- | --- |
-| Pipelines | v1.5.0 | kubectl apply -f <<https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml>> |
-| Triggers | v0.33.0 | kubectl apply -f <<https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml>> kubectl apply -f <<https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml>> |
-| Dashboard | v0.62.0 | kubectl apply -f <<https://storage.googleapis.com/tekton-releases/dashboard/latest/release.yaml>> |
+| Pipelines | v1.5.0 | kubectl apply -f <https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml> |
+| Triggers | v0.33.0 | kubectl apply -f <https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml> kubectl apply -f <https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml> |
+| Dashboard | v0.62.0 | kubectl apply -f <https://storage.googleapis.com/tekton-releases/dashboard/latest/release.yaml> |
 
-Tekton 네임스페이스 확인**:** kubectl get ns | grep tekton
+Tekton 네임스페이스 확인**:** kubectl get ns \| grep tekton
 
 cli 설치
 

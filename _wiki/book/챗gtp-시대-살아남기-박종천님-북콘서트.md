@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/833
 
 ![img-2460-중간](/resource/FE/93D262-C6D5-5BE0-955D-1A44C9E38F4A/01-img-2460-중간.jpg)
 
-* [챗GPT 시대 살아남기 | 박종천 - 교보문고](https://product.kyobobook.co.kr/detail/S000214261499) - product.kyobobook.co.kr
+* [챗GPT 시대 살아남기 \| 박종천 - 교보문고](https://product.kyobobook.co.kr/detail/S000214261499) - product.kyobobook.co.kr
 
 박종천님 북콘서트 후기입니다.
 

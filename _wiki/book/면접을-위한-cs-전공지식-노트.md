@@ -17,7 +17,7 @@ origin  : https://itcoin.tistory.com/728
 
 ![img-1561-중간](/resource/A5/D674A9-226F-50CD-809D-39DB1F73FC33/01-img-1561-중간.jpg)
 
-* [면접을 위한 CS 전공지식 노트 | 주홍철 - 교보문고](https://product.kyobobook.co.kr/detail/S000001834833) - product.kyobobook.co.kr
+* [면접을 위한 CS 전공지식 노트 \| 주홍철 - 교보문고](https://product.kyobobook.co.kr/detail/S000001834833) - product.kyobobook.co.kr
 
 면접전에 준비해야할 때 읽어볼만한 책으로 추천하고 싶습니다.
 
