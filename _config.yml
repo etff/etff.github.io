@@ -1,17 +1,17 @@
 # Site settings
-title: 기계인간 John Grib
-url: "https://johngrib.github.io"
+title: etff wiki
+url: "https://etff.github.io"
 baseurl: ""
 description: >
-    기계인간 블로그
+    배운 것을 기록하는 위키
 
 # My information
-email: johngrib82@gmail.com
-author: 기계인간 John Grib
-profile: 유물론자
-twitter_username: John_Grib
-github_username: johngrib
-comment-support: utterances
+email:
+author: etff
+profile:
+twitter_username:
+github_username: etff
+comment-support: giscus
 
 # Build settings
 plugins:
@@ -22,9 +22,6 @@ permalink: /blog/:year/:month/:day/:title/
 
 markdown: kramdown
 highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
 
 paginate: 10
 paginator_path: "/blog"
@@ -37,25 +34,29 @@ collections:
         permalink: /:collection/:path/
 
 # Comment Service
+# TODO: https://giscus.app 에서 repo_id, category_id 를 발급받아 채워야 댓글이 동작합니다.
+#       사전 조건: 리포에 Discussions 활성화 + giscus 앱 설치
 giscus:
-  repo: johngrib/johngrib.github.io
-  repo_id: SAMPLE-VALUE
+  repo: etff/etff.github.io
+  repo_id:
   category: Announcements
-  category_id: SAMPLE-VALUE
+  category_id:
 
 google_analytics:
-  ua: SAMPLE-VALUE
-  encrypted_ua: THIS-IS-SAMPLE-VALUE
+  ua:
+  encrypted_ua:
 
 google_adsense:
-  client: SAMPLE-VALUE
+  client:
 
-blame: "https://github.com/johngrib/johngrib.github.io/blame/master/_wiki"
-edit: "https://github.com/johngrib/johngrib.github.io/edit/master/_wiki"
-issue: "https://github.com/johngrib/johngrib.github.io/issues/new"
+blame: "https://github.com/etff/etff.github.io/blame/master/_wiki"
+edit: "https://github.com/etff/etff.github.io/edit/master/_wiki"
+issue: "https://github.com/etff/etff.github.io/issues/new"
 
 timezone: "Asia/Seoul"
 
-# https://kramdown.gettalong.org/rdoc/Kramdown/Options.html - smart_quotes
+# https://kramdown.gettalong.org/rdoc/Kramdown/Options.html
 kramdown:
+    input: GFM
+    syntax_highlighter: rouge
     smart_quotes: ["apos", "apos", "quot", "quot"]

@@ -2,7 +2,8 @@
 
 # github에 올린 user-images를 자동으로 다운로드합니다.
 
-NUM=1855714
+# github user id (https://api.github.com/users/etff 의 id)
+NUM=8775409
 
 CHANGE_LIST=`git diff --exit-code --cached --name-only --diff-filter=ACM -- '*.md'`
 
@@ -21,7 +22,8 @@ for CHANGED_FILE in $CHANGE_LIST; do
     # URI_LIST=`ag "https://user-images\.githubuser.*?\/$NUM\/.*?(png|jpg|gif|mp4)" -o $CHANGED_FILE`
     # URI_LIST=`ag "https://pbs.twimg.com/media/.*?(png|jpg|gif|mp4)" -o $CHANGED_FILE`
 
-    URI_LIST=`ag "https://((user-images\.githubuser.*?\/$NUM\/)|(pbs.twimg.com/media/)|(video.twimg.com/.+_video/)).*?(png|jpg|gif|mp4)" -o $CHANGED_FILE`
+    # 원본은 ag(the_silver_searcher)를 사용했으나, 별도 설치 없이 동작하도록 perl로 대체했다.
+    URI_LIST=`perl -nle 'print $& while m{https://((user-images\.githubuser.*?/'"$NUM"'/)|(pbs\.twimg\.com/media/)|(video\.twimg\.com/.+_video/)).*?(png|jpg|gif|mp4)}g' $CHANGED_FILE`
 
     for URI in $URI_LIST; do
         FILE_NAME=`echo $URI | sed 's,^.*/,,'`
