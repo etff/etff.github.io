@@ -33,3 +33,9 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem 'kramdown-parser-gfm'
 
+# Ruby 3.4부터 기본 gem에서 빠진 표준 라이브러리들 (Jekyll 4.1 로드에 필요)
+gem 'csv'
+gem 'base64'
+gem 'bigdecimal'
+gem 'logger'
+
