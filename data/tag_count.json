@@ -1,5 +1,9 @@
 [
  {
+  "name": "book",
+  "size": 185
+ },
+ {
   "name": "how-to",
   "size": 1
  },

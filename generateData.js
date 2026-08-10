@@ -237,6 +237,11 @@ function parseInfo(file, info) {
 
         const key = result[1].trim();
         const val = result[2].trim()
+            // 제목에 : 나 [ 가 들어가면 YAML 파싱이 깨지므로 따옴표로 감싸야 한다.
+            // 그 따옴표는 값의 일부가 아니므로 벗겨낸다.
+            .replace(/^"(.*)"$/, '$1')
+            .replace(/^'(.*)'$/, '$1')
+            .replace(/\\"/g, '"')
             .replace(/\[{2}\/?|\]{2}/g, '')    // 문서 이름 앞뒤의 [[  ]], [[/ ]] 를 제거한다.
         ;
 
