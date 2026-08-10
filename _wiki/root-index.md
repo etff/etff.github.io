@@ -10,6 +10,8 @@ regenerate: true
 
 ## [[book]]
 
+## [[seminar]]
+
 ## [[how-to]]
 
 * [[mathjax-latex]]
