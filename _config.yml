@@ -34,13 +34,14 @@ collections:
         permalink: /:collection/:path/
 
 # Comment Service
-# TODO: https://giscus.app 에서 repo_id, category_id 를 발급받아 채워야 댓글이 동작합니다.
-#       사전 조건: 리포에 Discussions 활성화 + giscus 앱 설치
+# repo_id, category_id 는 GitHub GraphQL API 로 조회한 값이다.
+#   gh api graphql -f query='query{repository(owner:"etff",name:"etff.github.io"){
+#     id discussionCategories(first:20){nodes{id name}}}}'
 giscus:
   repo: etff/etff.github.io
-  repo_id:
+  repo_id: R_kgDOJYVRag
   category: Announcements
-  category_id:
+  category_id: DIC_kwDOJYVRas4DDEcO
 
 google_analytics:
   ua:
