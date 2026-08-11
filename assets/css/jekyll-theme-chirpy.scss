@@ -1,0 +1,47 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+
+/* 목록 카드 썸네일을 세로 3:4 로 바꾼다.
+ *
+ * 테마 기본값은 .preview-img { aspect-ratio: 40 / 21 } 에 object-fit: cover 라서
+ * 박스가 가로로 길다. 이 사이트의 문서는 대부분 세로 책표지 사진이라 위아래가
+ * 크게 잘렸다.
+ *
+ * 문서 상단 히어로 이미지는 그대로 40:21 을 쓴다. #post-list 안으로 한정해서
+ * 목록 카드만 바꾼다.
+ *
+ * 768px 미만에서는 테마가 이미지를 카드 위쪽에 가로로 꽉 채워 쌓으므로
+ * (flex-md-row-reverse 가 md 부터 적용) 건드리지 않는다. */
+@media (min-width: 768px) {
+  #post-list {
+    .post-preview > .col-md-5 {
+      flex: 0 0 auto;
+      width: 20%;
+    }
+
+    .post-preview > .col-md-7 {
+      flex: 0 0 auto;
+      width: 80%;
+    }
+
+    .preview-img {
+      /* height: 100% 를 함께 풀어야 한다. 그대로 두면 행 높이가 본문 쪽
+       * 텍스트에 맞춰 늘어나면서 aspect-ratio 가 무시된다. */
+      height: auto;
+      aspect-ratio: 3 / 4;
+    }
+  }
+}
