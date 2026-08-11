@@ -11,12 +11,12 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: etff wiki # the main title
+title: Simple Blog # the main title
 
-tagline: 배운 것을 기록하는 위키 # it will display as the subtitle
+tagline: 배우고 경험한 것들을 기록합니다. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  배운 것을 기록하는 위키
+  배우고 경험한 것들을 기록합니다.
 
 # Fill in the protocol & hostname for your site.
 url: "https://etff.github.io"
@@ -73,7 +73,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/img/avatar.png
 
 social_preview_image:
 
