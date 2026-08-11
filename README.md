@@ -1,46 +1,26 @@
 # etff wiki
 
-Vimwiki + Jekyll + GitHub Pages 기반 개인 위키. <https://etff.github.io>
+Jekyll + GitHub Pages 기반 개인 위키. <https://etff.github.io>
 
-[johngrib/johngrib-jekyll-skeleton](https://github.com/johngrib/johngrib-jekyll-skeleton)을
-기반으로 만들었습니다. 구조에 대한 원작자의 설명은
-<https://johngrib.github.io/wiki/my-wiki/> 에서 볼 수 있습니다.
+테마는 [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)를 gem 으로 가져다 씁니다.
+테마 파일을 저장소에 복사해 두지 않으므로, 업그레이드는 `Gemfile` 의 버전만 올리면 됩니다.
 
 ## 설치하기
 
-### 루비
-
-macOS 시스템 기본 루비(2.6.x)로는 설치되지 않습니다. 의존성 중 `ffi`가 루비
-`>= 3.0`을 요구하기 때문입니다. Homebrew 루비를 사용하세요.
+macOS 시스템 기본 루비(2.6.x)로는 설치되지 않습니다. Chirpy 가 Jekyll 4.3+ 를 요구하기
+때문입니다. Homebrew 루비를 쓰세요. keg-only 라 PATH 에 직접 넣어야 잡힙니다.
 
 ```bash
 $ brew install ruby
 $ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"   # 셸 설정에 추가해 두는 것을 권장
 $ ruby -v                                          # 3.x 인지 확인
-```
-
-그다음 `bundle install`로 의존성을 설치합니다.
-
-```bash
 $ bundle install
-```
-
-> 루비 3.4부터 `csv`, `base64`, `bigdecimal`, `logger`가 기본 gem에서 빠졌고
-> Jekyll 4.1이 이들을 필요로 하므로 `Gemfile`에 명시해 두었습니다.
-
-### 노드 모듈
-
-메타 데이터 생성을 위해 `generateData.js`를 실행해야 하며, 이를 위해 `yamljs`
-의존성이 필요합니다.
-
-```bash
-$ npm install
 ```
 
 ### Git hooks 추가하기
 
-새로운 글을 등록하면 메타 데이터를 업데이트해 주어야 합니다. 커밋 전에 자동으로
-실행되도록 Git Hooks를 추가합니다.
+커밋할 문서에서 GitHub 에 올라간 이미지를 찾아 `resource/` 아래로 내려받고 경로를
+고쳐 주는 훅입니다.
 
 ```bash
 $ cp tool/pre-commit ./.git/hooks
@@ -49,14 +29,13 @@ $ cp tool/pre-commit ./.git/hooks
 ## 실행하기
 
 ```bash
-$ ./generateData.js                # 메타 데이터 생성 (data/, 태그 목록)
 $ bundle exec jekyll serve         # http://127.0.0.1:4000
 ```
 
-`start.sh`에 자주 쓰는 조합이 들어 있습니다.
+`start.sh` 에 자주 쓰는 조합이 들어 있습니다.
 
 ```bash
-$ ./start.sh watch    # generateData 후 --watch 로 실행
+$ ./start.sh watch    # --watch 로 실행
 $ ./start.sh back     # 백그라운드 실행 (로그: .localhost.log, PID: .localhost.pid)
 $ ./start.sh kill     # 백그라운드 서버 종료
 $ ./start.sh docker   # docker-compose 로 실행
@@ -64,84 +43,68 @@ $ ./start.sh docker   # docker-compose 로 실행
 
 ## 글 작성하기
 
-### 새로운 카테고리 만들기
-
-카테고리가 있는 글을 작성하려면 카테고리를 먼저 만들어야 합니다.
-`/_wiki/category-name.md` 파일을 만들고 다음 내용을 넣습니다.
-이때 `layout`은 `category`여야 합니다.
+문서는 모두 `_posts/` 아래에 둡니다. 파일명은 `YYYY-MM-DD-제목.md` 형식이어야 합니다.
+카테고리는 폴더가 아니라 front matter 의 `categories` 로 정합니다.
 
 ```markdown
 ---
-layout  : category
-title   : 제목을 입력합니다.
-summary :
-date    : 2026-08-10 00:00:00 +0900
-updated : 2026-08-10 00:00:00 +0900
-tag     :
-toc     : true
-public  : true
-parent  : index
-latex   : false
+title: 제목을 적습니다
+date: 2026-08-11 11:23:00 +0900
+last_modified_at: 2026-08-11 11:23:00 +0900
+categories: [book]
+tags: [book]
+description: 목록과 검색 결과에 쓰입니다
+toc: true
 ---
-
-* TOC
-{:toc}
-```
-
-### 위키에 글 등록하기
-
-`/_wiki` 폴더 아래에 마크다운으로 파일을 작성합니다. 카테고리 아래에 두려면
-카테고리 이름으로 폴더를 만들고 그 안에 파일을 추가합니다. 예를 들어
-`/_wiki/category-name/document.md` 처럼 만듭니다.
-
-`layout`은 `wiki`, `parent`는 상위 카테고리 이름입니다. 상위 카테고리가 없으면
-`parent`에 `index`를 넣습니다.
-
-```markdown
----
-layout  : wiki
-title   : 제목을 적습니다
-summary :
-date    : 2026-08-10 11:23:00 +0900
-updated : 2026-08-10 11:23:00 +0900
-tag     :
-toc     : true
-public  : true
-parent  : category-name
-latex   : false
----
-
-* TOC
-{:toc}
 
 내용을 적습니다.
 ```
+
+`* TOC` / `{:toc}` 는 넣지 않습니다. `toc: true` 면 테마가 우측 사이드바에 목차를
+만들어 줍니다.
+
+초안은 `_drafts/` 에 두면 빌드에서 빠집니다. 파일명에 날짜 접두사가 없어도 됩니다.
 
 ### front matter 참고
 
 | 필드 | 설명 |
 |---|---|
-| `layout` | 카테고리는 `category`, 일반 문서는 `wiki` |
-| `title` | 문서 제목. 브라우저 탭과 목록에 노출 |
-| `summary` | 목록과 `<meta name="description">`에 사용 |
-| `date` / `updated` | 작성일 / 수정일 |
-| `tag` | 공백으로 구분. `/tag/` 페이지와 `data/tag/*.json`이 이 값으로 생성됨 |
-| `toc` | `true`면 `* TOC` / `{:toc}` 위치에 목차 생성 |
-| `public` | `false`면 배포에서 제외 (초안 작성용) |
-| `parent` | 상위 문서. `[[index]]`처럼 대괄호를 써도 되고 `index`로 써도 됨 |
-| `latex` | `true`면 MathJax 로드 |
-| `resource` | 첨부 이미지를 두는 `resource/` 하위 경로 |
+| `title` | 문서 제목. `:` 나 `#` 가 들어가면 따옴표로 감싸야 함 |
+| `date` | 작성일. 파일명의 날짜와 맞추는 것을 권장 |
+| `last_modified_at` | 수정일. 홈의 "최근 업데이트" 목록 기준 |
+| `categories` | 최대 2단계. `/categories/<이름>/` 페이지가 자동 생성됨 |
+| `tags` | 여러 개 가능. `/tags/<이름>/` 페이지가 자동 생성됨 |
+| `description` | 목록과 `<meta name="description">` 에 사용. 없으면 본문 앞부분을 자동 발췌 |
+| `toc` | `true` 면 우측에 목차 표시 |
+| `math` | `true` 면 MathJax 로드 |
+| `comments` | `false` 면 giscus 댓글창을 숨김 |
+| `permalink` | URL 을 직접 지정. 없으면 `/posts/<title>/` |
+| `resource` | 첨부 이미지를 두는 `resource/` 하위 경로. `tool/save-images.sh` 가 참조 |
 
-문서끼리는 `[[document-name]]` 형식으로 연결합니다. 여기서 `document-name`은
-`_wiki` 기준 확장자 없는 경로입니다 (예: `_wiki/java/generics.md` → `java/generics`).
+### URL 규칙
+
+Vimwiki 시절 문서는 `/wiki/<카테고리>/<이름>/` URL 로 공개돼 있었습니다. 이 URL 을
+유지하려고 기존 문서 205개에는 front matter 에 `permalink` 를 박아 두었습니다.
+**기존 문서의 `permalink` 는 지우지 마세요.** 지우면 URL 이 `/posts/...` 로 바뀝니다.
+
+새 문서는 `permalink` 없이 써도 됩니다.
+
+구 위키 인덱스 URL(`/wiki/book/`, `/wiki/root-index/`, `/blog/` 등)은 `redirects/`
+아래의 리다이렉트 페이지가 `/categories/...` 로 넘겨 줍니다.
 
 ## 배포
 
-`master`에 push하면 GitHub Pages가 자동으로 빌드합니다 (legacy 빌드).
-커밋 전 pre-commit 훅이 `generateData.js`를 실행해 `data/`를 갱신합니다.
+`master` 에 push 하면 `.github/workflows/pages-deploy.yml` 이 빌드해서 배포합니다.
+
+GitHub Pages 기본 빌드는 쓸 수 없습니다. Chirpy 가 의존하는 `jekyll-archives` 가
+GitHub Pages 화이트리스트에 없기 때문입니다. 저장소 **Settings → Pages → Build and
+deployment → Source** 를 `GitHub Actions` 로 두어야 합니다.
+
+워크플로는 빌드 후 htmlproofer 로 내부 링크를 검사합니다. 링크가 깨지면 배포가
+막힙니다. 본문의 `http://` 외부 링크는 `--no-enforce-https` 로 통과시킵니다.
 
 ## 댓글
 
-[giscus](https://giscus.app)를 사용합니다. `_config.yml`의 `giscus.repo_id`와
-`giscus.category_id`를 채워야 동작합니다. 사전에 리포의 Discussions를 활성화하고
-giscus 앱을 설치해야 합니다.
+[giscus](https://giscus.app)를 사용합니다. 설정은 `_config.yml` 의
+`comments.provider` 와 `comments.giscus.*` 입니다. 사전에 리포의 Discussions 를
+활성화하고 giscus 앱을 설치해야 합니다.

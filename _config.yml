@@ -1,63 +1,207 @@
-# Site settings
-title: etff wiki
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# `_data/locales/ko-KR.yml` 이 있으므로 레이아웃 문구도 한국어로 나온다.
+lang: ko-KR
+
+timezone: Asia/Seoul
+
+# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# ↓ --------------------------
+
+title: etff wiki # the main title
+
+tagline: 배운 것을 기록하는 위키 # it will display as the subtitle
+
+description: >- # used by seo meta and the atom feed
+  배운 것을 기록하는 위키
+
+# Fill in the protocol & hostname for your site.
 url: "https://etff.github.io"
-baseurl: ""
-description: >
-    배운 것을 기록하는 위키
 
-# My information
-email:
-author: etff
-profile:
-twitter_username:
-github_username: etff
-comment-support: giscus
+github:
+  username: etff
 
-# Build settings
-plugins:
-  - jekyll-paginate
-  - jekyll-gist
+twitter:
+  username:
 
-permalink: /blog/:year/:month/:day/:title/
+social:
+  name: etff
+  email:
+  fediverse_handle:
+  links:
+    - https://github.com/etff
 
-markdown: kramdown
-highlighter: rouge
+# Site Verification Settings
+webmaster_verifications:
+  google:
+  bing:
+  alexa:
+  yandex:
+  baidu:
+  facebook:
+
+# ↑ --------------------------
+# The end of `jekyll-seo-tag` settings
+
+# Web Analytics Settings
+analytics:
+  google:
+    id:
+  goatcounter:
+    id:
+  umami:
+    id:
+    domain:
+  matomo:
+    id:
+    domain:
+  cloudflare:
+    id:
+  fathom:
+    id:
+
+# Page views settings
+pageviews:
+  provider:
+
+# 비워두면 시스템 설정을 따르고 사이드바 좌측 하단에 다크/라이트 토글이 나온다.
+theme_mode: # [light | dark]
+
+cdn:
+
+# the avatar on sidebar, support local or CORS resources
+avatar:
+
+social_preview_image:
+
+# boolean type, the global switch for TOC in posts.
+toc: true
+
+actions:
+  edit_post:
+    enabled: false
+    url: ""
+    static_url: false
+
+comments:
+  provider: giscus
+  disqus:
+    shortname:
+  utterances:
+    repo:
+    issue_term:
+  # repo_id, category_id 는 GitHub GraphQL API 로 조회한 값이다.
+  #   gh api graphql -f query='query{repository(owner:"etff",name:"etff.github.io"){
+  #     id discussionCategories(first:20){nodes{id name}}}}'
+  giscus:
+    repo: etff/etff.github.io
+    repo_id: R_kgDOJYVRag
+    category: Announcements
+    category_id: DIC_kwDOJYVRas4DDEcO
+    mapping:
+    strict:
+    input_position:
+    lang:
+    reactions_enabled:
+
+assets:
+  self_host:
+    enabled:
+    env:
+
+pwa:
+  enabled: true
+  cache:
+    enabled: true
+    deny_paths:
 
 paginate: 10
-paginator_path: "/blog"
-paginate_path: "/blog/page:num/"
 
-# Collections
-collections:
-    wiki:
-        output: true
-        permalink: /:collection/:path/
+# The base URL of your site
+baseurl: ""
 
-# Comment Service
-# repo_id, category_id 는 GitHub GraphQL API 로 조회한 값이다.
-#   gh api graphql -f query='query{repository(owner:"etff",name:"etff.github.io"){
-#     id discussionCategories(first:20){nodes{id name}}}}'
-giscus:
-  repo: etff/etff.github.io
-  repo_id: R_kgDOJYVRag
-  category: Announcements
-  category_id: DIC_kwDOJYVRas4DDEcO
+# ------------ The following options are not recommended to be modified ------------------
 
-google_analytics:
-  ua:
-  encrypted_ua:
-
-google_adsense:
-  client:
-
-blame: "https://github.com/etff/etff.github.io/blame/master/_wiki"
-edit: "https://github.com/etff/etff.github.io/edit/master/_wiki"
-issue: "https://github.com/etff/etff.github.io/issues/new"
-
-timezone: "Asia/Seoul"
-
-# https://kramdown.gettalong.org/rdoc/Kramdown/Options.html
 kramdown:
-    input: GFM
-    syntax_highlighter: rouge
-    smart_quotes: ["apos", "apos", "quot", "quot"]
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: highlight
+    # default_lang: console
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: "" # An empty string here means all files in the project
+      type: posts
+    values:
+      layout: post
+      comments: true # Enable comments in posts.
+      toc: true # Display TOC column in posts.
+      # 기존 위키/블로그 URL 은 문서별 front matter 의 permalink 로 고정한다.
+      # 이 기본값은 permalink 가 없는 새 글에만 적용된다.
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs # see `site.collections`
+    values:
+      layout: page
+      permalink: /:title/
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - purgecss.js
+  - "*.config.js"
+  - "package*.json"
+  # 구 위키 도구 및 로컬 실행 파일
+  - _config.yml.sample
+  - docker-compose.yml
+  - start.sh
+  - generateData.js
+  - node_modules
+  - tool
+  - data
+  # 상위 템플릿 저장소를 초기화할 때 쓰던 샘플 문서. 삭제된 레이아웃을 참조한다.
+  - resource/skeleton-post
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
