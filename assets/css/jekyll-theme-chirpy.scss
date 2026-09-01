@@ -45,3 +45,49 @@
     }
   }
 }
+
+/* 사이드바 "카테고리" 탭 아래에 카테고리 목록을 펼친다.
+ *
+ * 마크업은 _includes/sidebar.html 오버라이드에서 넣는다.
+ *
+ * 중첩 li 에는 .nav-item 을 주지 않았으므로 탭 항목용 padding/hover 규칙은
+ * 상속되지 않는다. 다만 테마의 #sidebar ul { margin-bottom: 2rem } 은
+ * 중첩 목록에도 걸리므로 여기서 되돌린다. */
+#sidebar {
+  .sidebar-subnav {
+    /* 3rem = 탭 li 의 padding-left 1.5rem + 아이콘이 차지하는 폭 1.5rem.
+     * 세로선이 탭 라벨 왼쪽 끝에 오도록 맞춘 값이다. */
+    margin: 0.25rem 0 0.4rem 3rem;
+    padding-left: 0.85rem;
+    border-left: 1px solid var(--sidebar-border-color);
+    list-style: none;
+
+    /* 테마 xxxl(1650px) 부터 탭 padding 이 2.75rem 로 커진다 */
+    @media all and (min-width: 1650px) {
+      margin-left: 4.25rem;
+    }
+
+    a {
+      display: block;
+      padding: 0.25rem 0;
+      font-size: 85%;
+      font-weight: 400;
+      line-height: 1.5;
+
+      &:hover {
+        color: var(--sidebar-active-color);
+      }
+    }
+
+    .subnav-item.active > a {
+      color: var(--sidebar-active-color);
+      font-weight: 600;
+    }
+  }
+
+  .sidebar-subnav-child {
+    margin: 0;
+    padding-left: 0.85rem;
+    list-style: none;
+  }
+}
