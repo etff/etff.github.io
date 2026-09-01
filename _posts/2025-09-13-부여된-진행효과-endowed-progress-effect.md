@@ -6,7 +6,7 @@ tags: [일상]
 toc: true
 origin: "https://itcoin.tistory.com/873"
 image:
-  path: /assets/img/posts/부여된-진행효과-endowed-progress-effect/01.png
+  path: /assets/img/posts/부여된-진행효과-endowed-progress-effect/01.jpg
 ---
 
 부여된 진행효과란 사람들이 어떤 목표를 향해 나아갈 때, 이미 일정 부분이 진행되었다고 인식할 경우
